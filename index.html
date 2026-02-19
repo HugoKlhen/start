@@ -189,28 +189,163 @@ body{
   color:#C9D1F5;
 }
 
+/* ===== MODELOS (PREMIUM) ===== */
 .model-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+  gap:34px;
+  margin-top:36px;
 }
 
-.model-box{
-  height:200px;
-  border-radius:20px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(15px);
-  border:1px solid rgba(255,255,255,0.1);
+.model-card{
+  text-align:left;
+  padding:0;
+  border-radius:22px;
+  transition:0.35s cubic-bezier(0.16,1,0.3,1);
+  position:relative;
+}
+
+.model-card:hover{
+  transform:translateY(-10px);
+}
+
+.model-card h4{
+  margin-top:18px;
+  font-size:1.2rem;
+  color:#F8F9FF;
+  letter-spacing:-0.2px;
+}
+
+.model-card p{
+  margin-top:10px;
+  color:#C9D1F5;
+  font-size:0.98rem;
+  line-height:1.45;
+}
+
+/* container visual */
+.model-image{
+  position:relative;
+  border-radius:22px;
+  overflow:hidden;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.10);
+  backdrop-filter:blur(14px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.35);
+}
+
+/* glow suave no card */
+.model-image::after{
+  content:"";
+  position:absolute;
+  inset:-40%;
+  background:radial-gradient(circle at 30% 30%, rgba(0,224,255,0.20), transparent 45%),
+             radial-gradient(circle at 70% 60%, rgba(108,99,255,0.18), transparent 50%);
+  opacity:0.0;
+  transition:0.5s ease;
+  pointer-events:none;
+}
+
+.model-card:hover .model-image::after{
+  opacity:1;
+}
+
+.model-image img{
+  width:100%;
+  display:block;
+  height:240px;
+  object-fit:cover;
+  transform:scale(1.02);
+  transition:transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.7s cubic-bezier(0.16,1,0.3,1);
+  filter:saturate(1.05) contrast(1.05);
+}
+
+.model-card:hover .model-image img{
+  transform:scale(1.08);
+  filter:saturate(1.15) contrast(1.08);
+}
+
+/* overlay premium */
+.overlay{
+  position:absolute;
+  inset:0;
   display:flex;
+  align-items:flex-end;
+  justify-content:flex-start;
+  padding:18px;
+  background:linear-gradient(to top, rgba(0,0,0,0.78), rgba(0,0,0,0.12));
+  opacity:0;
+  transition:opacity 0.45s ease;
+}
+
+.model-card:hover .overlay{
+  opacity:1;
+}
+
+/* BOTÃO PREMIUM */
+.btn-demo{
+  position:relative;
+  display:inline-flex;
   align-items:center;
   justify-content:center;
-  transition:0.3s;
-  cursor:pointer;
+  gap:10px;
+  padding:12px 18px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#00E0FF,#6C63FF);
+  color:#fff;
+  font-weight:700;
+  text-decoration:none;
+  border:1px solid rgba(255,255,255,0.18);
+  box-shadow:0 14px 35px rgba(0,224,255,0.22);
+  transform:translateY(10px);
+  transition:transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease, filter 0.45s ease;
+  overflow:hidden;
+  will-change:transform;
 }
 
-.model-box:hover{
-  transform:scale(1.05);
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+.model-card:hover .btn-demo{
+  transform:translateY(0);
+}
+
+/* brilho animado no botão */
+.btn-demo::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-120%;
+  width:120%;
+  height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform:skewX(-18deg);
+  transition:left 0.7s ease;
+}
+
+.model-card:hover .btn-demo::before{
+  left:130%;
+}
+
+.btn-demo:hover{
+  box-shadow:0 18px 48px rgba(108,99,255,0.35);
+  filter:brightness(1.02);
+}
+
+/* setinha (sem precisar de SVG externo) */
+.btn-demo .arrow{
+  font-weight:800;
+  transform:translateX(0);
+  transition:transform 0.35s ease;
+}
+
+.btn-demo:hover .arrow{
+  transform:translateX(4px);
+}
+
+/* acessibilidade */
+.btn-demo:focus{
+  outline:none;
+}
+.btn-demo:focus-visible{
+  box-shadow:0 0 0 4px rgba(0,224,255,0.18), 0 18px 48px rgba(108,99,255,0.35);
 }
 
 /* CTA */
@@ -279,12 +414,6 @@ body{
   transform:translateY(0);
 }
 
-.footer-brand h3{
-  font-size:1.2rem;
-  color:#00E0FF;
-  margin-bottom:8px;
-}
-
 .footer-brand p{
   color:#C9D1F5;
   font-size:0.9rem;
@@ -350,7 +479,9 @@ body{
     <div class="model-image">
       <img src="modelos/img/servicos-thumb.jpg" alt="Modelo Serviços">
       <div class="overlay">
-        <a href="https://modelo-servicos-html.vercel.app" target="_blank">Ver Demonstração</a>
+        <a href="https://modelo-servicos-html.vercel.app" target="_blank" rel="noopener" class="btn-demo">
+          Ver Modelo ao Vivo <span class="arrow">→</span>
+        </a>
       </div>
     </div>
     <h4>Modelo Serviços</h4>
@@ -361,7 +492,9 @@ body{
     <div class="model-image">
       <img src="modelos/img/gastronomia-thumb.jpg" alt="Modelo Gastronomia">
       <div class="overlay">
-        <a href="https://modelo-gastronomia-html.vercel.app" target="_blank">Ver Demonstração</a>
+        <a href="https://modelo-gastronomia-html.vercel.app" target="_blank" rel="noopener" class="btn-demo">
+          Ver Modelo ao Vivo <span class="arrow">→</span>
+        </a>
       </div>
     </div>
     <h4>Modelo Gastronomia</h4>
@@ -374,7 +507,7 @@ body{
 
 <section class="cta reveal">
 <h2>Pronto para aumentar seu faturamento?</h2>
-<a href="https://wa.me/55SEUNUMEROAQUI" class="whatsapp" target="_blank">Falar no WhatsApp</a>
+<a href="https://wa.me/55SEUNUMEROAQUI" class="whatsapp" target="_blank" rel="noopener">Falar no WhatsApp</a>
 </section>
 
 <footer class="premium-footer">
