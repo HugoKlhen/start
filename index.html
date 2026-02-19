@@ -1,3 +1,461 @@
-<a href="https://modelo-servicos-html.vercel.app" target="_blank">Ver Serviços</a>
-<a href="https://modelo-gastronomia-html.vercel.app" target="_blank">Ver Gastronomia</a>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hugo Klhen | Soluções Digitais</title>
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Inter', sans-serif;
+  scroll-behavior:smooth;
+}
+
+body{
+  background:#3A405A;
+  color:#F8F9FF;
+  overflow-x:hidden;
+}
+
+/* HERO */
+.hero{
+  height:100vh;
+  background:url('background-empresarial.png') center/cover no-repeat fixed;
+  position:relative;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  padding:20px;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(135deg, rgba(58,64,90,0.9), rgba(20,25,40,0.85));
+  z-index:1;
+}
+
+#particles{
+  position:absolute;
+  width:100%;
+  height:100%;
+  z-index:2;
+}
+
+.hero-content{
+  position:relative;
+  max-width:800px;
+  z-index:3;
+}
+
+.hero h1{
+  font-size:3rem;
+  font-weight:800;
+  background:linear-gradient(90deg,#00E0FF,#6C63FF,#00E0FF);
+  background-size:200% auto;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+  to{ background-position:200% center; }
+}
+
+.hero p{
+  margin-top:20px;
+  font-size:1.2rem;
+  color:#ffffff;
+}
+
+/* BOTÕES */
+.buttons{
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  gap:20px;
+  flex-wrap:wrap;
+}
+
+.btn-primary, .btn-secondary{
+  padding:15px 30px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:600;
+  transition:0.3s;
+}
+
+.btn-primary{
+  background:linear-gradient(90deg,#00E0FF,#6C63FF);
+  color:#fff;
+  box-shadow:0 10px 30px rgba(0,224,255,0.3);
+}
+
+.btn-primary:hover{
+  transform:translateY(-4px);
+}
+
+.btn-secondary{
+  border:1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.05);
+  color:#fff;
+}
+
+.btn-secondary:hover{
+  background: rgba(255,255,255,0.15);
+}
+
+/* SECTIONS REVEAL */
+.reveal{
+  opacity:0;
+  transform:translateY(60px);
+  transition:all 1s cubic-bezier(0.16,1,0.3,1);
+}
+
+.reveal.active{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* SERVIÇOS */
+.services{
+  padding:120px 20px;
+  max-width:1200px;
+  margin:auto;
+  text-align:center;
+}
+
+.services h2{
+  font-size:2.2rem;
+  margin-bottom:20px;
+  color:#6C63FF;
+}
+
+.subtitle{
+  margin-bottom:60px;
+  font-size:1.2rem;
+  color:#C9D1F5;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.card{
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border-radius:20px;
+  padding:30px;
+  border:1px solid rgba(255,255,255,0.1);
+  transition:0.4s;
+}
+
+.card:hover{
+  transform:translateY(-10px);
+}
+
+.card h3{
+  margin-bottom:15px;
+  color:#00E0FF;
+}
+
+.card p{
+  color:#C9D1F5;
+}
+
+/* MODELOS */
+.models{
+  margin-top:100px;
+}
+
+.models h3{
+  font-size:1.8rem;
+  margin-bottom:10px;
+  color:#00E0FF;
+}
+
+.models p{
+  margin-bottom:40px;
+  color:#C9D1F5;
+}
+
+.model-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:30px;
+}
+
+.model-box{
+  height:200px;
+  border-radius:20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(15px);
+  border:1px solid rgba(255,255,255,0.1);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:0.3s;
+  cursor:pointer;
+}
+
+.model-box:hover{
+  transform:scale(1.05);
+  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+}
+
+/* CTA */
+.cta{
+  padding:120px 20px;
+  text-align:center;
+}
+
+.cta h2{
+  font-size:2.5rem;
+  margin-bottom:30px;
+  color:#00E0FF;
+}
+
+.whatsapp{
+  display:inline-block;
+  padding:15px 30px;
+  border-radius:50px;
+  background:#25D366;
+  color:#fff;
+  text-decoration:none;
+  font-weight:600;
+}
+
+/* FOOTER PREMIUM */
+.premium-footer{
+  margin-top:80px;
+  padding:60px 20px 30px;
+  background:linear-gradient(135deg,#2A2F4A,#1E2235);
+  position:relative;
+  overflow:hidden;
+}
+
+.premium-footer::before{
+  content:'';
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:3px;
+  background:linear-gradient(90deg,#00E0FF,#6C63FF,#00E0FF);
+  background-size:200% auto;
+  animation:footerLine 6s linear infinite;
+}
+
+@keyframes footerLine{
+  to{ background-position:200% center; }
+}
+
+.footer-container{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-between;
+  align-items:center;
+  gap:30px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all 1s cubic-bezier(0.16,1,0.3,1);
+}
+
+.premium-footer.active .footer-container{
+  opacity:1;
+  transform:translateY(0);
+}
+
+.footer-brand h3{
+  font-size:1.2rem;
+  color:#00E0FF;
+  margin-bottom:8px;
+}
+
+.footer-brand p{
+  color:#C9D1F5;
+  font-size:0.9rem;
+}
+
+.footer-links{
+  display:flex;
+  gap:20px;
+}
+
+.footer-links a{
+  color:#C9D1F5;
+  text-decoration:none;
+  font-size:0.9rem;
+  transition:0.3s;
+}
+
+.footer-links a:hover{
+  color:#00E0FF;
+}
+
+.footer-copy{
+  width:100%;
+  margin-top:20px;
+  font-size:0.8rem;
+  color:#8C93C9;
+}
+</style>
+</head>
+
+<body>
+
+<section class="hero">
+<canvas id="particles"></canvas>
+<div class="hero-content reveal">
+<h1>Transformando Ideias em Soluções Digitais</h1>
+<p>Landing pages estratégicas, Google Local e automações inteligentes para transformar visitantes em clientes.</p>
+
+<div class="buttons">
+<a href="#" class="btn-primary">Solicitar Orçamento Gratuito</a>
+<a href="#servicos" class="btn-secondary">Conhecer Serviços</a>
+</div>
+</div>
+</section>
+
+<section class="services reveal" id="servicos">
+<h2>Soluções Estratégicas</h2>
+
+<div class="grid">
+<div class="card"><h3>Landing Pages de Alta Conversão</h3><p>Páginas estratégicas focadas em transformar visitantes em clientes reais.</p></div>
+<div class="card"><h3>Google Local</h3><p>Domine as buscas da sua região e apareça no topo do Google Maps.</p></div>
+<div class="card"><h3>Automações Inteligentes</h3><p>Sistemas que economizam tempo e permitem escalar seu negócio.</p></div>
+<div class="card"><h3>Velocidade, Performance e Suporte</h3><p>Sites rápidos, seguros e suporte disponível.</p></div>
+</div>
+
+<div class="models reveal">
+<h3>Escolha o Modelo Ideal para Seu Negócio</h3>
+<p>Clique abaixo para visualizar uma demonstração profissional</p>
+
+<div class="model-grid">
+
+  <div class="model-card">
+    <div class="model-image">
+      <img src="modelos/img/servicos-thumb.jpg" alt="Modelo Serviços">
+      <div class="overlay">
+        <a href="https://modelo-servicos-html.vercel.app" target="_blank">Ver Demonstração</a>
+      </div>
+    </div>
+    <h4>Modelo Serviços</h4>
+    <p>Ideal para prestadores de serviço, clínicas e profissionais liberais.</p>
+  </div>
+
+  <div class="model-card">
+    <div class="model-image">
+      <img src="modelos/img/gastronomia-thumb.jpg" alt="Modelo Gastronomia">
+      <div class="overlay">
+        <a href="https://modelo-gastronomia-html.vercel.app" target="_blank">Ver Demonstração</a>
+      </div>
+    </div>
+    <h4>Modelo Gastronomia</h4>
+    <p>Perfeito para restaurantes, hamburguerias, cafeterias e delivery.</p>
+  </div>
+
+</div>
+</div>
+</section>
+
+<section class="cta reveal">
+<h2>Pronto para aumentar seu faturamento?</h2>
+<a href="https://wa.me/55SEUNUMEROAQUI" class="whatsapp" target="_blank">Falar no WhatsApp</a>
+</section>
+
+<footer class="premium-footer">
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <p>Soluções Digitais para Negócios Locais</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="#">Início</a>
+      <a href="#servicos">Serviços</a>
+      <a href="#">Contato</a>
+    </div>
+
+    <div class="footer-copy">
+      <p>© <span id="year"></span> Todos os direitos reservados</p>
+    </div>
+
+  </div>
+</footer>
+
+<script>
+/* REVEAL SCROLL */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll(){
+  reveals.forEach(el=>{
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    if(elementTop < windowHeight - 100){
+      el.classList.add("active");
+    }
+  });
+
+  const footer = document.querySelector(".premium-footer");
+  const footerTop = footer.getBoundingClientRect().top;
+  if(footerTop < window.innerHeight - 100){
+    footer.classList.add("active");
+  }
+}
+
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+/* ANO AUTOMÁTICO */
+document.getElementById("year").textContent = new Date().getFullYear();
+
+/* PARTICLES */
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+let particlesArray=[];
+class Particle{
+constructor(){
+this.x=Math.random()*canvas.width;
+this.y=Math.random()*canvas.height;
+this.size=Math.random()*2;
+this.speedY=Math.random()*0.5+0.2;
+}
+update(){
+this.y+=this.speedY;
+if(this.y>canvas.height){this.y=0;}
+}
+draw(){
+ctx.fillStyle="rgba(255,255,255,0.4)";
+ctx.beginPath();
+ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+ctx.fill();
+}
+}
+function init(){for(let i=0;i<80;i++){particlesArray.push(new Particle());}}
+function animate(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+particlesArray.forEach(p=>{p.update();p.draw();});
+requestAnimationFrame(animate);
+}
+init();
+animate();
+</script>
+
+</body>
+</html>
