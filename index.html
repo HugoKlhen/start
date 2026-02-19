@@ -76,7 +76,7 @@ body{
   color:#ffffff;
 }
 
-/* BOTÕES */
+/* BOTÕES HERO */
 .buttons{
   margin-top:40px;
   display:flex;
@@ -113,7 +113,7 @@ body{
   background: rgba(255,255,255,0.15);
 }
 
-/* SECTIONS REVEAL */
+/* REVEAL SCROLL */
 .reveal{
   opacity:0;
   transform:translateY(60px);
@@ -137,12 +137,6 @@ body{
   font-size:2.2rem;
   margin-bottom:20px;
   color:#6C63FF;
-}
-
-.subtitle{
-  margin-bottom:60px;
-  font-size:1.2rem;
-  color:#C9D1F5;
 }
 
 .grid{
@@ -173,7 +167,7 @@ body{
   color:#C9D1F5;
 }
 
-/* MODELOS */
+/* MODELOS (ULTRA CLEAN) */
 .models{
   margin-top:100px;
   text-align:center;
@@ -186,190 +180,118 @@ body{
 }
 
 .models p{
-  margin-bottom:10px;
+  margin-bottom:40px;
   color:#C9D1F5;
 }
 
-/* ===== MODELOS (ULTRA PREMIUM) ===== */
 .model-grid{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-  gap:28px;
-  margin-top:36px;
-  align-items:stretch;
+  gap:22px;
+  max-width:1100px;
+  margin:0 auto;
 }
 
-.model-card.premium{
-  border-radius:24px;
-  overflow:hidden;
-  background:rgba(255,255,255,0.04);
+.model-item{
+  background: rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.10);
-  box-shadow: 0 18px 55px rgba(0,0,0,0.28);
-  transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease;
-}
-
-.model-card.premium:hover{
-  transform: translateY(-10px);
-  box-shadow: 0 26px 75px rgba(0,0,0,0.35);
-}
-
-.model-media{
+  border-radius:22px;
+  padding:22px 22px;
+  text-align:left;
+  backdrop-filter: blur(16px);
+  box-shadow: 0 18px 50px rgba(0,0,0,0.18);
+  transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s ease, border-color .35s ease;
   position:relative;
-  padding:26px 22px 22px;
-  min-height:420px;
-  background:
-    radial-gradient(900px 360px at 20% 10%, rgba(0,224,255,0.18), transparent 55%),
-    radial-gradient(900px 360px at 80% 30%, rgba(108,99,255,0.18), transparent 55%),
-    linear-gradient(135deg, rgba(18,20,32,0.30), rgba(255,255,255,0.02));
+  overflow:hidden;
 }
 
-.model-card.premium:hover .model-media{
-  filter: saturate(1.03);
-}
-
-/* Badge */
-.badge{
+.model-item::before{
+  content:"";
   position:absolute;
-  top:18px;
-  left:18px;
+  inset:-40%;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(0,224,255,0.16), transparent 45%),
+    radial-gradient(circle at 70% 60%, rgba(108,99,255,0.14), transparent 55%);
+  opacity:0;
+  transition:opacity .45s ease;
+  pointer-events:none;
+}
+
+.model-item:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 26px 70px rgba(0,0,0,0.26);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.model-item:hover::before{
+  opacity:1;
+}
+
+.model-top{
+  display:flex;
+  align-items:flex-start;
+  justify-content:space-between;
+  gap:16px;
+}
+
+.model-title{
+  font-size:1.15rem;
+  font-weight:800;
+  color:#F8F9FF;
+  letter-spacing:-0.2px;
+}
+
+.model-desc{
+  margin-top:10px;
+  color:#C9D1F5;
+  font-size:0.98rem;
+  line-height:1.45;
+  max-width:52ch;
+}
+
+/* Badge discreto */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
   padding:8px 12px;
   border-radius:999px;
   font-size:0.72rem;
-  font-weight:800;
+  font-weight:900;
   letter-spacing:0.6px;
-  z-index:5;
-  border:1px solid rgba(255,255,255,0.18);
-  backdrop-filter: blur(10px);
-  text-transform:uppercase;
+  border:1px solid rgba(255,255,255,0.16);
+  background:rgba(255,255,255,0.06);
+  color:#EAF0FF;
+  white-space:nowrap;
 }
 
 .badge-new{
-  background:rgba(0,224,255,0.16);
+  background:rgba(0,224,255,0.14);
   color:#BFF7FF;
 }
 
 .badge-hot{
-  background:rgba(255,171,64,0.18);
+  background:rgba(255,171,64,0.16);
   color:#FFE0B3;
 }
 
-/* Device frame (celular) */
-.device-frame{
-  width:min(240px, 65%);
-  aspect-ratio: 9/19.5;
-  margin:34px auto 0;
-  border-radius:28px;
-  position:relative;
-  overflow:hidden;
-  background:rgba(0,0,0,0.25);
-  border:1px solid rgba(255,255,255,0.14);
-  box-shadow:
-    0 18px 45px rgba(0,0,0,0.35),
-    inset 0 0 0 1px rgba(255,255,255,0.06);
-  transform: translateY(0) scale(1);
-  transition: transform 0.6s cubic-bezier(0.16,1,0.3,1), box-shadow 0.6s ease;
-}
-
-.model-card.premium:hover .device-frame{
-  transform: translateY(-6px) scale(1.02);
-  box-shadow:
-    0 26px 65px rgba(0,0,0,0.45),
-    inset 0 0 0 1px rgba(255,255,255,0.08);
-}
-
-.device-notch{
-  position:absolute;
-  top:10px;
-  left:50%;
-  transform:translateX(-50%);
-  width:48%;
-  height:16px;
-  border-radius:999px;
-  background:rgba(0,0,0,0.45);
-  border:1px solid rgba(255,255,255,0.10);
-  z-index:2;
-}
-
-.device-shot{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  display:block;
-  filter: contrast(1.05) saturate(1.05);
-  transform: scale(1.03);
-  transition: transform 0.7s cubic-bezier(0.16,1,0.3,1), filter 0.7s ease;
-}
-
-.model-card.premium:hover .device-shot{
-  transform: scale(1.08);
-  filter: contrast(1.08) saturate(1.10);
-}
-
-/* Glass info (texto em cima da imagem + blur) */
-.glass-info{
-  position:absolute;
-  left:18px;
-  right:18px;
-  bottom:18px;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-between;
-  gap:14px;
-  padding:16px 16px;
-  border-radius:18px;
-  background: rgba(255,255,255,0.07);
-  border:1px solid rgba(255,255,255,0.12);
-  backdrop-filter: blur(16px);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.28);
-}
-
-.glass-text{
-  text-align:left;
-  min-width:0;
-}
-
-.glass-text h4{
-  font-size:1.05rem;
-  color:#F8F9FF;
-  margin-bottom:6px;
-  letter-spacing:-0.2px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
-}
-
-.glass-text p{
-  color:#C9D1F5;
-  font-size:0.90rem;
-  line-height:1.35;
-  max-width:40ch;
-}
-
-/* Botão demo (premium, menor e elegante) */
+/* Botão ultra clean */
 .btn-demo{
-  position:relative;
+  margin-top:16px;
   display:inline-flex;
   align-items:center;
-  justify-content:center;
   gap:10px;
   padding:12px 16px;
   border-radius:999px;
   background:linear-gradient(90deg,#00E0FF,#6C63FF);
   color:#fff;
   font-weight:800;
-  font-size:0.92rem;
   text-decoration:none;
   border:1px solid rgba(255,255,255,0.18);
   box-shadow:0 14px 35px rgba(0,224,255,0.18);
-  transition: transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s ease, filter 0.35s ease;
+  transition: transform .3s cubic-bezier(0.16,1,0.3,1), box-shadow .3s ease, filter .3s ease;
+  position:relative;
   overflow:hidden;
-  white-space:nowrap;
-}
-
-.btn-demo:hover{
-  transform: translateY(-3px);
-  box-shadow:0 18px 48px rgba(108,99,255,0.30);
-  filter: brightness(1.02);
 }
 
 .btn-demo::before{
@@ -382,6 +304,12 @@ body{
   background:linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
   transform:skewX(-18deg);
   transition:left 0.7s ease;
+}
+
+.btn-demo:hover{
+  transform: translateY(-3px);
+  box-shadow:0 18px 48px rgba(108,99,255,0.30);
+  filter: brightness(1.02);
 }
 
 .btn-demo:hover::before{
@@ -398,14 +326,11 @@ body{
   transform: translateX(4px);
 }
 
-/* Responsivo */
-@media (max-width: 520px){
-  .model-media{ min-height: 420px; }
-  .glass-info{
-    flex-direction:column;
-    align-items:flex-start;
-  }
-  .btn-demo{ width:100%; justify-content:center; }
+.btn-demo:focus{
+  outline:none;
+}
+.btn-demo:focus-visible{
+  box-shadow:0 0 0 4px rgba(0,224,255,0.18), 0 18px 48px rgba(108,99,255,0.30);
 }
 
 /* CTA */
@@ -501,6 +426,12 @@ body{
   font-size:0.8rem;
   color:#8C93C9;
 }
+
+/* Responsivo geral */
+@media (max-width: 520px){
+  .hero h1{ font-size:2.25rem; }
+  .cta h2{ font-size:2rem; }
+}
 </style>
 </head>
 
@@ -523,10 +454,10 @@ body{
 <h2>Soluções Estratégicas</h2>
 
 <div class="grid">
-<div class="card"><h3>Landing Pages de Alta Conversão</h3><p>Páginas estratégicas focadas em transformar visitantes em clientes reais.</p></div>
-<div class="card"><h3>Google Local</h3><p>Domine as buscas da sua região e apareça no topo do Google Maps.</p></div>
-<div class="card"><h3>Automações Inteligentes</h3><p>Sistemas que economizam tempo e permitem escalar seu negócio.</p></div>
-<div class="card"><h3>Velocidade, Performance e Suporte</h3><p>Sites rápidos, seguros e suporte disponível.</p></div>
+  <div class="card"><h3>Landing Pages de Alta Conversão</h3><p>Páginas estratégicas focadas em transformar visitantes em clientes reais.</p></div>
+  <div class="card"><h3>Google Local</h3><p>Domine as buscas da sua região e apareça no topo do Google Maps.</p></div>
+  <div class="card"><h3>Automações Inteligentes</h3><p>Sistemas que economizam tempo e permitem escalar seu negócio.</p></div>
+  <div class="card"><h3>Velocidade, Performance e Suporte</h3><p>Sites rápidos, seguros e suporte disponível.</p></div>
 </div>
 
 <div class="models reveal">
@@ -535,49 +466,33 @@ body{
 
   <div class="model-grid">
 
-    <!-- CARD 1 -->
-    <article class="model-card premium">
-      <div class="model-media">
+    <div class="model-item">
+      <div class="model-top">
+        <div>
+          <div class="model-title">Modelo Serviços</div>
+          <div class="model-desc">Ideal para prestadores de serviço, clínicas e profissionais liberais.</div>
+        </div>
         <span class="badge badge-new">NOVO</span>
-
-        <div class="device-frame">
-          <div class="device-notch"></div>
-          <img class="device-shot" src="modelos/img/servicos-thumb.jpg" alt="Preview Modelo Serviços">
-        </div>
-
-        <div class="glass-info">
-          <div class="glass-text">
-            <h4>Modelo Serviços</h4>
-            <p>Ideal para prestadores de serviço, clínicas e profissionais liberais.</p>
-          </div>
-          <a class="btn-demo" href="https://modelo-servicos-html.vercel.app" target="_blank" rel="noopener">
-            Ver modelo ao vivo <span class="arrow">→</span>
-          </a>
-        </div>
       </div>
-    </article>
 
-    <!-- CARD 2 -->
-    <article class="model-card premium">
-      <div class="model-media">
+      <a class="btn-demo" href="https://modelo-servicos-html.vercel.app" target="_blank" rel="noopener">
+        Ver modelo ao vivo <span class="arrow">→</span>
+      </a>
+    </div>
+
+    <div class="model-item">
+      <div class="model-top">
+        <div>
+          <div class="model-title">Modelo Gastronomia</div>
+          <div class="model-desc">Perfeito para restaurantes, hamburguerias, cafeterias e delivery.</div>
+        </div>
         <span class="badge badge-hot">MAIS VENDIDO</span>
-
-        <div class="device-frame">
-          <div class="device-notch"></div>
-          <img class="device-shot" src="modelos/img/gastronomia-thumb.jpg" alt="Preview Modelo Gastronomia">
-        </div>
-
-        <div class="glass-info">
-          <div class="glass-text">
-            <h4>Modelo Gastronomia</h4>
-            <p>Perfeito para restaurantes, hamburguerias, cafeterias e delivery.</p>
-          </div>
-          <a class="btn-demo" href="https://modelo-gastronomia-html.vercel.app" target="_blank" rel="noopener">
-            Ver modelo ao vivo <span class="arrow">→</span>
-          </a>
-        </div>
       </div>
-    </article>
+
+      <a class="btn-demo" href="https://modelo-gastronomia-html.vercel.app" target="_blank" rel="noopener">
+        Ver modelo ao vivo <span class="arrow">→</span>
+      </a>
+    </div>
 
   </div>
 </div>
