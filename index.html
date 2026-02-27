@@ -196,18 +196,33 @@ body::after{
   gap:26px;
 }
 
-/* CARDS COM LINHA FINA COLORIDA (como no modelo) */
+/* CARDS COM LINHA FINA COLORIDA */
 .card{
   position:relative;
   border-radius:22px;
   padding:30px;
   text-align:left;
   color:#F8F9FF;
-
   background: linear-gradient(180deg, rgba(10,14,30,0.94), rgba(7,9,22,0.92));
   box-shadow: 0 18px 60px rgba(0,0,0,0.18);
   overflow:hidden;
   transition:0.4s;
+}
+
+/* Logo interna dos cards */
+.card-logo{
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 32px;
+  height: auto;
+  opacity: 0.6;
+  transition: 0.3s;
+}
+
+.card:hover .card-logo{
+  opacity: 1;
+  transform: rotate(5deg) scale(1.1);
 }
 
 /* linha fina no topo */
@@ -232,6 +247,7 @@ body::after{
   margin-bottom:12px;
   color:#EAF0FF;
   font-weight:800;
+  padding-right: 40px; /* Evita sobreposição com a logo */
 }
 
 .card p{
@@ -264,7 +280,7 @@ body::after{
   margin:0 auto;
 }
 
-/* também com linha fina no topo (mesmo padrão) */
+/* também com linha fina no topo */
 .model-item{
   position:relative;
   overflow:hidden;
@@ -272,7 +288,6 @@ body::after{
   padding:22px;
   text-align:left;
   color:#F8F9FF;
-
   background: linear-gradient(180deg, rgba(10,14,30,0.94), rgba(7,9,22,0.92));
   box-shadow: 0 18px 60px rgba(0,0,0,0.18);
   transition: transform .35s cubic-bezier(0.16,1,0.3,1), box-shadow .35s ease;
@@ -529,7 +544,6 @@ body::after{
 
 <section class="hero">
   <div class="hero-content reveal">
-    <!-- Troque o arquivo abaixo pelo nome que você salvar a logo (ex: logo.png) -->
     <img class="hero-logo" src="logo.png" alt="Logo">
 
     <h1 class="gradient-title">Transformando Ideias em Soluções Digitais</h1>
@@ -546,10 +560,26 @@ body::after{
   <h2 class="gradient-title">Soluções Estratégicas</h2>
 
   <div class="grid">
-    <div class="card"><h3>Landing Pages de Alta Conversão</h3><p>Páginas estratégicas focadas em transformar visitantes em clientes reais.</p></div>
-    <div class="card"><h3>Google Local</h3><p>Domine as buscas da sua região e apareça no topo do Google Maps.</p></div>
-    <div class="card"><h3>Automações Inteligentes</h3><p>Sistemas que economizam tempo e permitem escalar seu negócio.</p></div>
-    <div class="card"><h3>Velocidade, Performance e Suporte</h3><p>Sites rápidos, seguros e suporte disponível.</p></div>
+    <div class="card">
+      <img class="card-logo" src="logo.png" alt="Logo Icon">
+      <h3>Landing Pages de Alta Conversão</h3>
+      <p>Páginas estratégicas focadas em transformar visitantes em clientes reais.</p>
+    </div>
+    <div class="card">
+      <img class="card-logo" src="logo.png" alt="Logo Icon">
+      <h3>Google Local</h3>
+      <p>Domine as buscas da sua região e apareça no topo do Google Maps.</p>
+    </div>
+    <div class="card">
+      <img class="card-logo" src="logo.png" alt="Logo Icon">
+      <h3>Automações Inteligentes</h3>
+      <p>Sistemas que economizam tempo e permitem escalar seu negócio.</p>
+    </div>
+    <div class="card">
+      <img class="card-logo" src="logo.png" alt="Logo Icon">
+      <h3>Velocidade, Performance e Suporte</h3>
+      <p>Sites rápidos, seguros e suporte disponível.</p>
+    </div>
   </div>
 
   <div class="models reveal">
