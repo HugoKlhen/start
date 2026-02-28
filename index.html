@@ -33,12 +33,12 @@
   width: 100%;
   padding: 15px 5%;
   display: flex;
-  justify-content: space-between; /* Logo à esquerda, botão à direita */
+  justify-content: space-between; 
   align-items: center;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(20, 25, 40, 0.05);
 }
 
 .logo-container {
@@ -48,7 +48,7 @@
 }
 
 .logo-svg {
-  width: 45px;
+  width: 42px;
   height: auto;
 }
 
@@ -152,11 +152,29 @@ body::after{
   box-shadow:0 12px 30px rgba(0,224,255,0.22);
   border:1px solid rgba(255,255,255,0.35);
   cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 120%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.45), transparent);
+  transform: skewX(-18deg);
+  transition: left 0.7s ease;
 }
 
 .btn-primary:hover{
   transform:translateY(-4px);
   box-shadow:0 18px 44px rgba(108,99,255,0.28);
+}
+
+.btn-primary:hover::before {
+  left: 130%;
 }
 
 /* Espaçamento do botão no card */
@@ -492,17 +510,17 @@ body::after{
 
 <nav class="navbar">
   <a href="#" class="logo-container">
-    <svg class="logo-svg" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+    <svg class="logo-svg" viewBox="0 0 100 85" xmlns="http://www.w3.org/2000/svg">
       <defs>
         <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
           <stop offset="0%" style="stop-color:var(--violet);stop-opacity:1" />
           <stop offset="100%" style="stop-color:var(--cyan);stop-opacity:1" />
         </linearGradient>
       </defs>
-      <rect x="10" y="25" width="40" height="15" rx="7.5" fill="url(#logoGrad)" transform="rotate(-35 30 32.5)"/>
-      <rect x="35" y="45" width="40" height="15" rx="7.5" fill="url(#logoGrad)" transform="rotate(-35 55 52.5)"/>
-      <circle cx="50" cy="15" r="8" fill="url(#logoGrad)" />
-      <circle cx="45" cy="72" r="8" fill="url(#logoGrad)" />
+      <rect x="15" y="25" width="45" height="18" rx="9" fill="url(#logoGrad)" transform="rotate(-35 37.5 34)"/>
+      <rect x="40" y="45" width="45" height="18" rx="9" fill="url(#logoGrad)" transform="rotate(-35 62.5 54)"/>
+      <circle cx="55" cy="15" r="10" fill="url(#logoGrad)" />
+      <circle cx="45" cy="75" r="10" fill="url(#logoGrad)" />
     </svg>
   </a>
 
