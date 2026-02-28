@@ -31,13 +31,25 @@
   top: 0;
   left: 0;
   width: 100%;
-  padding: 20px 5%;
+  padding: 15px 5%;
   display: flex;
-  justify-content: flex-end; /* Botão no canto superior direito */
+  justify-content: space-between; /* Logo à esquerda, botão à direita */
   align-items: center;
   z-index: 1000;
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.logo-svg {
+  width: 45px;
+  height: auto;
 }
 
 /* FUNDO CLARO COM EFEITO MAIS VISÍVEL */
@@ -471,7 +483,7 @@ body::after{
   .hero h1{ font-size:2.15rem; }
   .cta h2{ font-size:2rem; }
   .hero-content{ padding:28px 18px; }
-  .navbar { justify-content: center; padding: 15px; }
+  .navbar { padding: 10px 5%; }
 }
 </style>
 </head>
@@ -479,6 +491,21 @@ body::after{
 <body>
 
 <nav class="navbar">
+  <a href="#" class="logo-container">
+    <svg class="logo-svg" viewBox="0 0 100 80" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%" style="stop-color:var(--violet);stop-opacity:1" />
+          <stop offset="100%" style="stop-color:var(--cyan);stop-opacity:1" />
+        </linearGradient>
+      </defs>
+      <rect x="10" y="25" width="40" height="15" rx="7.5" fill="url(#logoGrad)" transform="rotate(-35 30 32.5)"/>
+      <rect x="35" y="45" width="40" height="15" rx="7.5" fill="url(#logoGrad)" transform="rotate(-35 55 52.5)"/>
+      <circle cx="50" cy="15" r="8" fill="url(#logoGrad)" />
+      <circle cx="45" cy="72" r="8" fill="url(#logoGrad)" />
+    </svg>
+  </a>
+
   <a href="https://wa.me/?text=Olá,%20vim%20pela%20landing%20page%20e%20gostaria%20de%20solicitar%20um%20orçamento." class="btn-primary" target="_blank" rel="noopener">Solicitar Orçamento</a>
 </nav>
 
@@ -571,271 +598,6 @@ function revealOnScroll(){
   const footer = document.querySelector(".premium-footer");
   const footerTop = footer.getBoundingClientRect().top;
   if(footerTop < window.innerHeight - 100) footer.classList.add("active");
-}
-window.addEventListener("scroll", revealOnScroll);
-revealOnScroll();
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hugo Klhen | Soluções Digitais</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Inter', sans-serif;
-  scroll-behavior:smooth;
-}
-
-:root{
-  --ink:#0B1020;
-  --muted:#4A5168;
-  --bg:#F4F6FF;
-  --bg2:#EEF2FF;
-  --cyan:#00E0FF;
-  --violet:#6C63FF;
-}
-
-/* HEADER / NAVBAR */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  padding: 20px 5%;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-  z-index: 1000;
-  background: rgba(255, 255, 255, 0.01);
-  backdrop-filter: blur(5px);
-}
-
-body{
-  color:var(--ink);
-  overflow-x:hidden;
-  background-color: var(--bg);
-}
-
-/* NOVA SEÇÃO HERO COM IMAGEM */
-.hero {
-  height: 100vh;
-  width: 100%;
-  /* SUBSTITUA O LINK ABAIXO PELA SUA IMAGEM */
-  background-image: url('SUA_IMAGEM_AQUI.jpg'); 
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-
-/* Camada suave para garantir legibilidade se necessário */
-.hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.05); /* Escurece quase imperceptivelmente */
-    z-index: 1;
-}
-
-/* Overlay do botão para posicionar exatamente sobre o design da imagem */
-.hero-action-container {
-    position: relative;
-    z-index: 2;
-    margin-top: 280px; /* Ajuste este valor para o botão subir ou descer na imagem */
-}
-
-/* BOTÃO ESTILIZADO (IGUAL AO ANTERIOR PORÉM CENTRALIZADO) */
-.btn-hero-central {
-  padding: 16px 35px;
-  border-radius: 50px;
-  text-decoration: none;
-  font-weight: 700;
-  font-size: 1.1rem;
-  transition: 0.3s;
-  background: linear-gradient(90deg, var(--cyan), var(--violet));
-  color: #fff;
-  box-shadow: 0 10px 40px rgba(0, 224, 255, 0.4); /* Efeito Neon */
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  cursor: pointer;
-  display: inline-block;
-}
-
-.btn-hero-central:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 15px 50px rgba(108, 99, 255, 0.6);
-}
-
-/* BOTÕES GERAIS */
-.btn-primary {
-  padding:12px 28px;
-  border-radius:50px;
-  text-decoration:none;
-  font-weight:700;
-  transition:0.3s;
-  display:inline-flex;
-  align-items:center;
-  background:linear-gradient(90deg,var(--cyan),var(--violet));
-  color:#fff;
-  box-shadow:0 12px 30px rgba(0,224,255,0.22);
-  border:1px solid rgba(255,255,255,0.35);
-}
-
-/* REVEAL SCROLL */
-.reveal{
-  opacity:0;
-  transform:translateY(60px);
-  transition:all 1s cubic-bezier(0.16,1,0.3,1);
-}
-.reveal.active{
-  opacity:1;
-  transform:translateY(0);
-}
-
-/* SERVIÇOS */
-.services{
-  padding:110px 20px;
-  max-width:1200px;
-  margin:auto;
-  text-align:center;
-}
-
-.gradient-title{
-  background:linear-gradient(90deg, var(--cyan), var(--violet), var(--cyan));
-  background-size:200% auto;
-  background-clip:text;
-  -webkit-background-clip:text;
-  color:transparent;
-  -webkit-text-fill-color:transparent;
-  animation:shine 5s linear infinite;
-  font-weight: 800;
-}
-@keyframes shine{ to{ background-position:200% center; } }
-
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:26px;
-  margin-top: 40px;
-}
-
-.card{
-  position:relative;
-  border-radius:22px;
-  padding:30px;
-  text-align:left;
-  color:#F8F9FF;
-  background: linear-gradient(180deg, rgba(10,14,30,0.94), rgba(7,9,22,0.92));
-  box-shadow: 0 18px 60px rgba(0,0,0,0.18);
-  overflow:hidden;
-  transition:0.4s;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  border-radius: 22px;
-  padding: 2px;
-  background: linear-gradient(90deg, rgba(0,224,255,0.95), rgba(108,99,255,0.95), rgba(0,224,255,0.95));
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-}
-
-/* MODELOS */
-.models{ margin-top:95px; text-align:center; }
-.model-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(320px,1fr)); gap:22px; max-width:1100px; margin:0 auto; }
-.model-item{ position:relative; border-radius:22px; padding:22px; text-align:left; color:#F8F9FF; background: linear-gradient(180deg, rgba(10,14,30,0.94), rgba(7,9,22,0.92)); }
-.btn-demo{ margin-top:16px; display:inline-flex; align-items:center; gap:10px; padding:12px 16px; border-radius:999px; background:linear-gradient(90deg,var(--cyan),var(--violet)); color:#fff; text-decoration:none; font-weight:900; }
-
-/* CTA & FOOTER */
-.cta{ padding:110px 20px; text-align:center; }
-.whatsapp{ display:inline-block; padding:15px 30px; border-radius:50px; background:#25D366; color:#fff; text-decoration:none; font-weight:700; transition: 0.3s; }
-.float-wa{ position: fixed; width: 60px; height: 60px; bottom: 30px; right: 30px; background-color: #25d366; border-radius: 50px; display: flex; align-items: center; justify-content: center; z-index: 1000; animation: pulseWA 2s infinite; color: white; }
-
-.premium-footer{ margin-top:70px; padding:60px 20px 30px; background:rgba(255,255,255,0.9); border-top:1px solid rgba(20,25,40,0.08); text-align:center; }
-
-@media (max-width: 768px){
-  .hero { background-position: 70% center; } /* Ajusta o fundo para o texto não sumir no mobile */
-  .hero-action-container { margin-top: 150px; }
-  .btn-hero-central { padding: 12px 25px; font-size: 0.95rem; }
-}
-</style>
-</head>
-
-<body>
-
-<nav class="navbar">
-  <a href="https://wa.me/?text=Olá" class="btn-primary" target="_blank">Solicitar Orçamento</a>
-</nav>
-
-<section class="hero">
-  <div class="hero-action-container reveal">
-      <a href="#servicos" class="btn-hero-central">Conhecer Serviços</a>
-  </div>
-</section>
-
-<section class="services reveal" id="servicos">
-  <h2 class="gradient-title">Soluções Estratégicas</h2>
-  <div class="grid">
-    <div class="card"><h3>Landing Pages de Alta Conversão</h3><p>Páginas estratégicas focadas em transformar visitantes em clientes reais.</p></div>
-    <div class="card"><h3>Google Local</h3><p>Domine as buscas da sua região e apareça no topo do Google Maps.</p></div>
-    <div class="card"><h3>Automações Inteligentes</h3><p>Sistemas que economizam tempo e permitem escalar seu negócio.</p></div>
-    <div class="card"><h3>Velocidade e Suporte</h3><p>Sites rápidos, seguros e suporte disponível.</p></div>
-  </div>
-
-  <div class="models reveal">
-    <h3>Escolha o Modelo Ideal para Seu Negócio</h3>
-    <p>Clique abaixo para visualizar uma demonstração</p>
-    <div class="model-grid">
-      <div class="model-item">
-        <div class="model-title">Modelo Serviços</div>
-        <div class="model-desc">Ideal para prestadores de serviço e clínicas.</div>
-        <a class="btn-demo" href="#" target="_blank">Ver modelo ao vivo →</a>
-      </div>
-      <div class="model-item">
-        <div class="model-title">Modelo Gastronomia</div>
-        <div class="model-desc">Perfeito para restaurantes e delivery.</div>
-        <a class="btn-demo" href="#" target="_blank">Ver modelo ao vivo →</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="cta reveal">
-  <h2>Pronto para aumentar seu faturamento?</h2>
-  <a href="#" class="whatsapp">Falar no WhatsApp</a>
-</section>
-
-<a href="#" class="float-wa">
-  <svg width="30" height="30" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.438 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
-</a>
-
-<footer class="premium-footer">
-    <p>© <span id="year"></span> Hugo Klhen - Soluções Digitais. Todos os direitos reservados.</p>
-</footer>
-
-<script>
-const reveals = document.querySelectorAll(".reveal");
-function revealOnScroll(){
-  reveals.forEach(el=>{
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    if(elementTop < windowHeight - 100) el.classList.add("active");
-  });
 }
 window.addEventListener("scroll", revealOnScroll);
 revealOnScroll();
